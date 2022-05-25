@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/tictactoe.dir/src/main.cpp.o CMakeFiles/tictactoe.dir/src/board.cpp.o CMakeFiles/tictactoe.dir/src/helper.cpp.o CMakeFiles/tictactoe.dir/src/user.cpp.o CMakeFiles/tictactoe.dir/src/setting.cpp.o CMakeFiles/tictactoe.dir/src/xo.cpp.o  -o tictactoe  -lsfml-system -lsfml-window -lsfml-graphics 
