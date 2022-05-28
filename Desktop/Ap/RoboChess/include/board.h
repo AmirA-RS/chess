@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "user.h"
 #include "data.h"
 #include "cell.h"
@@ -26,6 +27,8 @@ public:
     vector <string> aPos;
     static vector<Piece*> pieces;
     static vector<Piece*> deleted;
+    sf::SoundBuffer buf;
+    sf::Sound sound;
     void init();
     void draw();
     void run();
