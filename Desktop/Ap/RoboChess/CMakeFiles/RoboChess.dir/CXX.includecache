@@ -11,9 +11,13 @@ board.h
 /home/amirabbas/Desktop/Ap/RoboChess/src/board.h
 iostream
 /home/amirabbas/Desktop/Ap/RoboChess/src/iostream
+SFML/Audio.hpp
+-
 
 include/board.h
 SFML/Graphics.hpp
+-
+SFML/Audio.hpp
 -
 user.h
 include/user.h

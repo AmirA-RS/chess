@@ -1,5 +1,6 @@
 #include "board.h"
 #include "iostream"
+#include <SFML/Audio.hpp>
 Board::Board(sf::RenderWindow* _window) : window(_window)
 {
     this->user_w = new User('W');
@@ -19,14 +20,8 @@ bool Board::move(const int&x, const int&y, Piece* piece, bool movePiece)
             {
                 if(exist(x, y))
                 {
-                    for(int i = 0; i<pieces.size(); i++)
-                    {
-                        if((*pieces[i]).x == x && (*pieces[i]).y == y&& inGame(pieces[i]) == 1)
-                        {
-                            deleted.insert(deleted.begin(), pieces[i]);
-                            break;
-                        }
-                    }
+                    Piece* p = find(x, y);
+                    deleted.insert(deleted.begin(), p);
                 }
                 piece->move(x, y);
             }
@@ -50,13 +45,14 @@ void Board::init()
         }
     }
     initPiece();
-    this->curr_user = this->user_b;
+    this->curr_user = this->user_w;
     font.loadFromFile("resources/fonts/roboto.ttf");
     status_text.setFont(font);
-    status_text.setCharacterSize(30);
+    status_text.setCharacterSize(60);
     status_text.setStyle(sf::Text::Regular);
-    status_text.setFillColor(sf::Color::Black);
-    status_text.setPosition(setting::board_x-90, 30);
+    status_text.setFillColor(sf::Color(10, 10, 128, 200));
+    status_text.setPosition(setting::board_x-20, setting::board_y/2 - status_text.getCharacterSize()*3);
+    status_text.setRotation(status_text.getRotation() + 90);
     this->update_status_text();
 }
 void Board::initPiece()
@@ -129,6 +125,12 @@ void Board::run()
     float piece_scale_y = (float)(setting::board_y) / background.getTexture()->getSize().y;
     background.setScale(piece_scale_x, piece_scale_y);
     setting::cell_size = (setting::board_x - 170)/8;
+    sf::Texture t;
+    t.loadFromFile("resources/images/marmar.png");
+    sf::Sprite table(t);
+    piece_scale_x = (float)(setting::board_x) / table.getTexture()->getSize().x;
+    piece_scale_y = (float)(setting::board_y) / table.getTexture()->getSize().y;
+    table.setScale(piece_scale_x, piece_scale_y);
     this->init();
     this->window->display();
     while (this->window->isOpen()) {
@@ -142,6 +144,7 @@ void Board::run()
             }
         }
         window->clear(sf::Color::White);
+        window->draw(table);
         window->draw(background);
         this->update_status_text();
         this->draw();
@@ -170,8 +173,8 @@ void Board::cell_occupied_clicked(const int&row, const int&column)
     {
         curr_piece = cells[row][column].piece;
         green(curr_piece);
-        red(curr_piece);
         blue(curr_piece);
+        red(curr_piece);
     }
     else
     {
@@ -219,7 +222,14 @@ void Board::green(Piece* piece)
                 if(!check(king))
                 {
                     undo(x1, y1, j, k, piece, p3);
-                    this->cells[j][k].rect.setFillColor(sf::Color::Green);
+                    if(this->cells[j][k].cell_status == OCCUPIED)
+                    {
+                       this->cells[j][k].rect.setFillColor(sf::Color(0,128,0, 200));
+                    }
+                    else if(this->cells[j][k].cell_status == EMPTY)
+                    {
+                        this->cells[j][k].rect.setFillColor(sf::Color(10, 255, 10, 80));
+                    }
                 }
                 else
                 {
@@ -235,23 +245,24 @@ void Board::red(Piece* piece)
     {
         int r = piece->danger[i][0];
         int c = piece->danger[i][1];
-        if(cells[r][c].rect.getFillColor() == sf::Color::Green)
-            this->cells[r][c].rect.setFillColor(sf::Color::Red);
+        if(cells[r][c].rect.getFillColor() == sf::Color(10, 255, 10, 80))
+            this->cells[r][c].rect.setFillColor(sf::Color(255, 10, 10, 80));
     } 
 }
 void Board::blue(Piece* piece)
 {
     for(int i = 0; i<piece->attacking.size(); i++)
     {
+        std::cout<<5<<' ';
         int r = piece->attacking[i][0];
         int c = piece->attacking[i][1];
-        if(cells[r][c].rect.getFillColor() == sf::Color::Green)
-            this->cells[r][c].rect.setFillColor(sf::Color::Blue);
+        if(cells[r][c].rect.getFillColor() == sf::Color(10, 255, 10, 80) || cells[r][c].rect.getFillColor() == (sf::Color(0,128,0, 200)))
+            this->cells[r][c].rect.setFillColor(sf::Color(10, 10, 255, 80));
     } 
 }
 void Board::cell_empty_clicked(int row, int column)
 {
-    if(cells[row][column].rect.getFillColor() == sf::Color::Blue || cells[row][column].rect.getFillColor() == sf::Color::Red || cells[row][column].rect.getFillColor() == sf::Color::Green)
+    if(cells[row][column].rect.getFillColor() ==sf::Color(10, 10, 255, 80) || cells[row][column].rect.getFillColor() == sf::Color(0,128,0, 200) || cells[row][column].rect.getFillColor() == sf::Color(10, 255, 10, 80) || cells[row][column].rect.getFillColor() == sf::Color(255, 10, 10, 80) || cells[row][column].rect.getFillColor() == sf::Color(10, 255, 10, 80))
     {
         for(int row = 0; row<8; row++)
         {
@@ -264,10 +275,14 @@ void Board::cell_empty_clicked(int row, int column)
         this->end = check_win(this->curr_user->color);
         if (this->end)
         {
+            buf.loadFromFile("resources/music/victory.ogg");
+            sound.setBuffer(buf);
+            sound.setVolume(100);
+            sound.play();
             Piece* king = find_king(curr_user->color == 'W'? 'B':'W');
             int row = king->x;
             int column = king->y;
-            this->cells[row][column].rect.setFillColor(sf::Color::Yellow);
+            this->cells[row][column].rect.setFillColor(sf::Color(10, 164, 164, 80));
             return;
         }
         this->curr_user = curr_user == user_w? user_b:user_w;
@@ -308,25 +323,51 @@ void Board::check_checked(const char& color)
     Piece* king = find_king(color);
     const int &row = king->x;
     const int &column = king->y;
+    static int counter =  0;
     if(check(king))
     {
-        this -> cells[row][column].rect.setFillColor(sf::Color::Magenta);
+        counter++;
+        if(counter == 1)
+        {
+            buf.loadFromFile("resources/music/check.ogg");
+            sound.setBuffer(buf);
+            sound.setVolume(100);
+            sound.play();
+        }
+        this -> cells[row][column].rect.setFillColor(sf::Color(164, 20, 164, 80));
     }
     else
     {
+        counter = 0;
         this -> cells[row][column].rect.setFillColor(setting::cell_color);
     }
 }
 void Board::put_xo_in_cell(int row, int column)
 {
+    if(this->cells[row][column].cell_status == OCCUPIED)
+    {
+        deleted.insert(deleted.begin(), this->cells[row][column].piece);
+        buf.loadFromFile("resources/music/remove.ogg");
+        sound.setBuffer(buf);
+        sound.setVolume(100);
+        sound.play();
+    }
+    else
+    {
+        this->cells[row][column].cell_status = OCCUPIED;
+        buf.loadFromFile("resources/music/move.ogg");
+        sound.setBuffer(buf);
+        sound.setVolume(100);
+        sound.play();
+    }
     int r = curr_piece->x;
     int c = curr_piece->y;
     this->cells[r][c].cell_status = EMPTY;
+    this->cells[r][c].piece = 0;
     curr_piece->sprite.setPosition(this->cells[row][column].rect.getPosition());
     this->cells[row][column].piece = curr_piece;
     curr_piece->x = row;
     curr_piece->y = column;
-    this->cells[row][column].cell_status = OCCUPIED;
 }
 void Board::update_status_text()
 {
