@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/Piece.cpp
+Piece.h
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/Piece.h
+iostream
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/iostream
+vector
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/vector
+
 /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.cpp
 board.h
 /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.h
@@ -18,11 +26,33 @@ button.h
 stdlib.h
 -
 
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/helper.cpp
+helper.h
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/helper.h
+iostream
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/iostream
+
 /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/main.cpp
 board.h
 /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.h
 iostream
 /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/iostream
+
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/setting.cpp
+setting.h
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/setting.h
+
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/user.cpp
+user.h
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/user.h
+
+include/Piece.h
+SFML/Graphics.hpp
+-
+helper.h
+include/helper.h
+setting.h
+include/setting.h
 
 include/board.h
 string
@@ -59,8 +89,8 @@ vector
 include/vector
 data.h
 include/data.h
-xo.h
-include/xo.h
+Piece.h
+include/Piece.h
 
 include/data.h
 
@@ -81,12 +111,4 @@ data.h
 include/data.h
 cell.h
 include/cell.h
-
-include/xo.h
-SFML/Graphics.hpp
--
-helper.h
-include/helper.h
-setting.h
-include/setting.h
 

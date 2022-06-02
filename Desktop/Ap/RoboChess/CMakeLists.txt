@@ -11,7 +11,7 @@ set(SOURCES
     ${SRC_DIRECTORY}/helper.cpp
     ${SRC_DIRECTORY}/user.cpp
     ${SRC_DIRECTORY}/setting.cpp
-    ${SRC_DIRECTORY}/xo.cpp
+    ${SRC_DIRECTORY}/Piece.cpp
 )
 
 include_directories(${INCLUDE_DIRECTORY})

@@ -335,7 +335,7 @@ void Board::cell_empty_clicked(int row, int column)
                 cells[row][column].rect.setFillColor(setting::cell_color);
             }
         }
-        put_xo_in_cell(row, column);
+        put_Piece_in_cell(row, column);
         this->end = check_win(this->curr_user->color);
         if (this->end)
         {
@@ -406,7 +406,7 @@ void Board::check_checked(const char& color)
         this -> cells[row][column].rect.setFillColor(setting::cell_color);
     }
 }
-void Board::put_xo_in_cell(int row, int column)
+void Board::put_Piece_in_cell(int row, int column)
 {
     if(this->cells[row][column].cell_status == OCCUPIED)
     {

@@ -7,7 +7,7 @@ sf::Vector2f get_cell_position(int row,int column)
         setting::cell_offset + row * ( setting::cell_size + setting::line_space));
 }
 
-string get_xo_path(const char&type, const char&color)
+string get_Piece_path(const char&type, const char&color)
 {
     string path = "resources/images/"; 
     path += type;

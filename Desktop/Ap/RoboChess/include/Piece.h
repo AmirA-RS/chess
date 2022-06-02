@@ -1,5 +1,5 @@
-#ifndef XO_H
-#define XO_H
+#ifndef Piece_H
+#define Piece_H
 
 #include <SFML/Graphics.hpp>
 #include "helper.h"

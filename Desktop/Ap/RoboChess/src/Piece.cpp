@@ -1,4 +1,4 @@
-#include "xo.h"
+#include "Piece.h"
 #include "iostream"
 #include "vector"
 Piece::Piece(const int &x,const int &y)
@@ -13,12 +13,12 @@ void Piece::move(const int&x, const int&y)
 }
 void Piece::setMoveNum()
 {}
-std::map<vector<char>, sf::Texture> xo_textures;
+std::map<vector<char>, sf::Texture> Piece_textures;
 void Piece::load_texture()
 {
-    if (xo_textures.find({type, color}) == xo_textures.end())
-        xo_textures[{type, color}].loadFromFile(get_xo_path(type, color));
-    this->sprite.setTexture(xo_textures[{type, color}]);
+    if (Piece_textures.find({type, color}) == Piece_textures.end())
+        Piece_textures[{type, color}].loadFromFile(get_Piece_path(type, color));
+    this->sprite.setTexture(Piece_textures[{type, color}]);
     float piece_scale_x = (float)setting::cell_size / this->sprite.getTexture()->getSize().x;
     float piece_scale_y = (float)setting::cell_size / this->sprite.getTexture()->getSize().y;
     this->sprite.setScale(piece_scale_x, piece_scale_y);

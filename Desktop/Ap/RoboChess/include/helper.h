@@ -9,7 +9,7 @@ using namespace std;
 
 sf::Vector2f get_cell_position(int row,int column);
 
-string get_xo_path(const char&, const char&);
+string get_Piece_path(const char&, const char&);
 
 int get_cell_index(int x);
 

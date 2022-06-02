@@ -141,18 +141,18 @@ CMakeFiles/RoboChess.dir/src/setting.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoboChess.dir/src/setting.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/setting.cpp -o CMakeFiles/RoboChess.dir/src/setting.cpp.s
 
-CMakeFiles/RoboChess.dir/src/xo.cpp.o: CMakeFiles/RoboChess.dir/flags.make
-CMakeFiles/RoboChess.dir/src/xo.cpp.o: src/xo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoboChess.dir/src/xo.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoboChess.dir/src/xo.cpp.o -c /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/xo.cpp
+CMakeFiles/RoboChess.dir/src/Piece.cpp.o: CMakeFiles/RoboChess.dir/flags.make
+CMakeFiles/RoboChess.dir/src/Piece.cpp.o: src/Piece.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoboChess.dir/src/Piece.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoboChess.dir/src/Piece.cpp.o -c /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/Piece.cpp
 
-CMakeFiles/RoboChess.dir/src/xo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoboChess.dir/src/xo.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/xo.cpp > CMakeFiles/RoboChess.dir/src/xo.cpp.i
+CMakeFiles/RoboChess.dir/src/Piece.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoboChess.dir/src/Piece.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/Piece.cpp > CMakeFiles/RoboChess.dir/src/Piece.cpp.i
 
-CMakeFiles/RoboChess.dir/src/xo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoboChess.dir/src/xo.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/xo.cpp -o CMakeFiles/RoboChess.dir/src/xo.cpp.s
+CMakeFiles/RoboChess.dir/src/Piece.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoboChess.dir/src/Piece.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/Piece.cpp -o CMakeFiles/RoboChess.dir/src/Piece.cpp.s
 
 # Object files for target RoboChess
 RoboChess_OBJECTS = \
@@ -161,7 +161,7 @@ RoboChess_OBJECTS = \
 "CMakeFiles/RoboChess.dir/src/helper.cpp.o" \
 "CMakeFiles/RoboChess.dir/src/user.cpp.o" \
 "CMakeFiles/RoboChess.dir/src/setting.cpp.o" \
-"CMakeFiles/RoboChess.dir/src/xo.cpp.o"
+"CMakeFiles/RoboChess.dir/src/Piece.cpp.o"
 
 # External object files for target RoboChess
 RoboChess_EXTERNAL_OBJECTS =
@@ -171,7 +171,7 @@ RoboChess: CMakeFiles/RoboChess.dir/src/board.cpp.o
 RoboChess: CMakeFiles/RoboChess.dir/src/helper.cpp.o
 RoboChess: CMakeFiles/RoboChess.dir/src/user.cpp.o
 RoboChess: CMakeFiles/RoboChess.dir/src/setting.cpp.o
-RoboChess: CMakeFiles/RoboChess.dir/src/xo.cpp.o
+RoboChess: CMakeFiles/RoboChess.dir/src/Piece.cpp.o
 RoboChess: CMakeFiles/RoboChess.dir/build.make
 RoboChess: CMakeFiles/RoboChess.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable RoboChess"

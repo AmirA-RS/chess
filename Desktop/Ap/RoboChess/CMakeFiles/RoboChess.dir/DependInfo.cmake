@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/Piece.cpp" "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir/src/Piece.cpp.o"
   "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.cpp" "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir/src/board.cpp.o"
   "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/helper.cpp" "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir/src/helper.cpp.o"
   "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/main.cpp" "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir/src/main.cpp.o"
   "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/setting.cpp" "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir/src/setting.cpp.o"
   "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/user.cpp" "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir/src/user.cpp.o"
-  "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/xo.cpp" "/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir/src/xo.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

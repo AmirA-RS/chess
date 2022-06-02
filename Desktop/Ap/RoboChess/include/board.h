@@ -38,7 +38,7 @@ public:
     void mouse_clicked(const sf::Vector2i& position);
     void cell_occupied_clicked(const int&row, const int&column);
     void cell_empty_clicked(int row, int column);
-    void put_xo_in_cell(int row, int column);
+    void put_Piece_in_cell(int row, int column);
     void check_end();
     void update_status_text();
     bool move(const int&x, const int&y, Piece* piece, bool movePiece = 1);

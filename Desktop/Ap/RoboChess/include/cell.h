@@ -3,7 +3,7 @@
 
 #include "vector"
 #include "data.h"
-#include "xo.h"
+#include "Piece.h"
 
 class Cell
 {

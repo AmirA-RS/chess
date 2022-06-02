@@ -142,6 +142,33 @@ RoboChess/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/build
 .PHONY : RoboChess/fast
 
+src/Piece.o: src/Piece.cpp.o
+
+.PHONY : src/Piece.o
+
+# target to build an object file
+src/Piece.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/src/Piece.cpp.o
+.PHONY : src/Piece.cpp.o
+
+src/Piece.i: src/Piece.cpp.i
+
+.PHONY : src/Piece.i
+
+# target to preprocess a source file
+src/Piece.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/src/Piece.cpp.i
+.PHONY : src/Piece.cpp.i
+
+src/Piece.s: src/Piece.cpp.s
+
+.PHONY : src/Piece.s
+
+# target to generate assembly for a file
+src/Piece.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/src/Piece.cpp.s
+.PHONY : src/Piece.cpp.s
+
 src/board.o: src/board.cpp.o
 
 .PHONY : src/board.o
@@ -277,33 +304,6 @@ src/user.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/src/user.cpp.s
 .PHONY : src/user.cpp.s
 
-src/xo.o: src/xo.cpp.o
-
-.PHONY : src/xo.o
-
-# target to build an object file
-src/xo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/src/xo.cpp.o
-.PHONY : src/xo.cpp.o
-
-src/xo.i: src/xo.cpp.i
-
-.PHONY : src/xo.i
-
-# target to preprocess a source file
-src/xo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/src/xo.cpp.i
-.PHONY : src/xo.cpp.i
-
-src/xo.s: src/xo.cpp.s
-
-.PHONY : src/xo.s
-
-# target to generate assembly for a file
-src/xo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/src/xo.cpp.s
-.PHONY : src/xo.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -313,6 +313,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... RoboChess"
+	@echo "... src/Piece.o"
+	@echo "... src/Piece.i"
+	@echo "... src/Piece.s"
 	@echo "... src/board.o"
 	@echo "... src/board.i"
 	@echo "... src/board.s"
@@ -328,9 +331,6 @@ help:
 	@echo "... src/user.o"
 	@echo "... src/user.i"
 	@echo "... src/user.s"
-	@echo "... src/xo.o"
-	@echo "... src/xo.i"
-	@echo "... src/xo.s"
 .PHONY : help
 
 
