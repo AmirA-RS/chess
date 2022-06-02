@@ -1,6 +1,6 @@
 #ifndef BOARD_H
 #define BOARD_H
-
+#include "string"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "user.h"
@@ -41,7 +41,7 @@ public:
     bool move(const int&x, const int&y, Piece* piece, bool movePiece = 1);
     bool reach(const int&a, const int&b, const int& type, Piece* piece);
     bool check(Piece* piece);
-    void initPiece();
+    void initPiece(string&);
     void green(Piece*);
     void red(Piece*);
     void blue(Piece*);

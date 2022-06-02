@@ -1,6 +1,8 @@
 #include "board.h"
 #include "iostream"
 #include <SFML/Audio.hpp>
+using sf::String;
+using sf::Text;
 Board::Board(sf::RenderWindow* _window) : window(_window)
 {
     this->user_w = new User('W');
@@ -44,7 +46,15 @@ void Board::init()
             this->cells[row][column].rect.setPosition(get_cell_position(row, column));
         }
     }
-    initPiece();
+    string inp;
+    string temp;
+    for(int i = 0; i<8; i++)
+    {
+        getline(cin, temp);
+        inp += temp+'\n';
+    }
+    initPiece(inp);
+    //initPiece();
     this->curr_user = this->user_w;
     font.loadFromFile("resources/fonts/roboto.ttf");
     status_text.setFont(font);
@@ -55,52 +65,56 @@ void Board::init()
     status_text.setRotation(status_text.getRotation() + 90);
     this->update_status_text();
 }
-void Board::initPiece()
+void Board::initPiece(string& text)
 {
-    for(int row = 1; row<8; row+=5)
+    int i, row, col;
+    i = row = col = 0;
+    while (row<8)
     {
-        for(int column = 0; column<8; column++)
+        if(text[i] == '-')
         {
-            this->cells[row][column].piece = new Pawn(row, column, row==1?'B':'W');
-            pieces.push_back(this->cells[row][column].piece);
-            this->cells[row][column].cell_status = OCCUPIED;
-            this->cells[row][column].piece->sprite.setPosition(this->cells[row][column].rect.getPosition());
+            i += 3;
+            col++;
+            
         }
-        int rowP = row == 1? row-1:row+1;
-        for(int column = 0; column<8; column++)
+        else
         {
-            switch (column)
+            if(text[i] == 'P')
             {
-            case 0:
-            case 7:
-                this->cells[rowP][column].piece = new Rook(rowP, column, row==1?'B':'W');
-                break;
-            case 1:
-            case 6:
-                this->cells[rowP][column].piece = new Knight(rowP, column, row==1?'B':'W');
-                
-                break;
-            case 2:
-            case 5:
-                this->cells[rowP][column].piece = new Bishop(rowP, column, row==1?'B':'W');
-                
-                break;
-            case 3:
-                this->cells[rowP][column].piece = new Queen(rowP, column, row==1?'B':'W');
-                
-                break;
-            case 4:
-                this->cells[rowP][column].piece = new King(rowP, column, row==1?'B':'W');
-                
-                break;
+                this->cells[row][col].piece = new Pawn(row, col, text[i+1]);
             }
-            pieces.push_back(this->cells[rowP][column].piece);
-            this->cells[rowP][column].cell_status = OCCUPIED;
-            this->cells[rowP][column].piece->sprite.setPosition(this->cells[rowP][column].rect.getPosition());
+            else if(text[i] == 'Q')
+            {
+                this->cells[row][col].piece = new Queen(row, col, text[i+1]);
+            }
+            else if(text[i] == 'N')
+            {
+                this->cells[row][col].piece = new Knight(row, col, text[i+1]);
+            }
+            else if(text[i] == 'B')
+            {
+                this->cells[row][col].piece = new Bishop(row, col, text[i+1]);
+            }
+            else if(text[i] == 'R')
+            {
+                this->cells[row][col].piece = new Rook(row, col, text[i+1]);
+            }
+            else if(text[i] == 'K')
+            {
+                this->cells[row][col].piece = new King(row, col, text[i+1]); 
+            }
+            pieces.push_back(this->cells[row][col].piece);
+            this->cells[row][col].cell_status = OCCUPIED;
+            this->cells[row][col].piece->sprite.setPosition(this->cells[row][col].rect.getPosition());
+            i += 3;
+            col++;
         }
-
+        if(col == 8)
+        {
+            col = 0;
+            row++;
+        }
     }
-    
 }
 void Board::draw()
 {
@@ -139,6 +153,12 @@ void Board::run()
             if (event.type == sf::Event::Closed) {
                 this->window->close();
             }
+            // string mapInput;
+            // Text mapText;
+            // if(event.type == sf::Event::TextEntered)
+            // {
+            //     mapInput += event.text.unicode;                             
+            // }
             if (!this->end && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 this->mouse_clicked(sf::Mouse::getPosition(*(this->window)));
             }
@@ -245,7 +265,7 @@ void Board::red(Piece* piece)
     {
         int r = piece->danger[i][0];
         int c = piece->danger[i][1];
-        if(cells[r][c].rect.getFillColor() == sf::Color(10, 255, 10, 80))
+        if(cells[r][c].rect.getFillColor() == sf::Color(10, 255, 10, 80) || cells[r][c].rect.getFillColor() == sf::Color(0,128,0, 200))
             this->cells[r][c].rect.setFillColor(sf::Color(255, 10, 10, 80));
     } 
 }
@@ -253,10 +273,9 @@ void Board::blue(Piece* piece)
 {
     for(int i = 0; i<piece->attacking.size(); i++)
     {
-        std::cout<<5<<' ';
         int r = piece->attacking[i][0];
         int c = piece->attacking[i][1];
-        if(cells[r][c].rect.getFillColor() == sf::Color(10, 255, 10, 80) || cells[r][c].rect.getFillColor() == (sf::Color(0,128,0, 200)))
+        if(cells[r][c].rect.getFillColor() == sf::Color(10, 255, 10, 80) || cells[r][c].rect.getFillColor() == sf::Color(0,128,0, 200))
             this->cells[r][c].rect.setFillColor(sf::Color(10, 10, 255, 80));
     } 
 }
