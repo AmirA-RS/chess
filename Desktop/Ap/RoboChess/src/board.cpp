@@ -207,6 +207,7 @@ void Board::mouse_clicked(const sf::Vector2i& position)
 
             }
         }
+        curr_user = user_w;
         pieces = {};
         deleted = {};
         string res;
