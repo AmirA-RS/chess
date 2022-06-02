@@ -6,15 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/amirabbas/Desktop/Ap/RoboChess/src/board.cpp
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.cpp
 board.h
-/home/amirabbas/Desktop/Ap/RoboChess/src/board.h
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.h
 iostream
-/home/amirabbas/Desktop/Ap/RoboChess/src/iostream
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/iostream
 SFML/Audio.hpp
 -
 
 include/board.h
+string
+include/string
 SFML/Graphics.hpp
 -
 SFML/Audio.hpp

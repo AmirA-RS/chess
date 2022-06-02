@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/amirabbas/Desktop/Ap/RoboChess/include
+CXX_INCLUDES = -I/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/include
 
 CXX_FLAGS = -std=gnu++11
 

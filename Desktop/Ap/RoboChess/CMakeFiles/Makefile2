@@ -63,10 +63,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/amirabbas/Desktop/Ap/RoboChess
+CMAKE_SOURCE_DIR = /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/amirabbas/Desktop/Ap/RoboChess
+CMAKE_BINARY_DIR = /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -93,14 +93,14 @@ clean: CMakeFiles/RoboChess.dir/clean
 CMakeFiles/RoboChess.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RoboChess.dir/build.make CMakeFiles/RoboChess.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/amirabbas/Desktop/Ap/RoboChess/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target RoboChess"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target RoboChess"
 .PHONY : CMakeFiles/RoboChess.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/RoboChess.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/amirabbas/Desktop/Ap/RoboChess/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/RoboChess.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/amirabbas/Desktop/Ap/RoboChess/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles 0
 .PHONY : CMakeFiles/RoboChess.dir/rule
 
 # Convenience name for target.
