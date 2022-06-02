@@ -18,12 +18,6 @@ button.h
 stdlib.h
 -
 
-/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/main.cpp
-board.h
-/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.h
-iostream
-/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/iostream
-
 include/board.h
 string
 include/string
