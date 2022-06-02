@@ -5,6 +5,7 @@
 #include <stdlib.h>
 using sf::String;
 using sf::Text;
+//mal mane
 Board::Board(sf::RenderWindow* _window) : window(_window)
 {
     this->user_w = new User('W');
