@@ -48,15 +48,16 @@ void Board::init()
             this->cells[row][column].rect.setPosition(get_cell_position(row, column));
         }
     }
-    // string inp;
-    // string temp;
-    // for(int i = 0; i<8; i++)
-    // {
-    //     getline(cin, temp);
-    //     inp += temp+'\n';
-    // }
-    //initPiece(inp);
-    //initPiece();
+    string temp;
+    string res;
+    ifstream inp;
+    inp.open("resources/map/map.txt");
+    while (inp>>temp)
+    {
+        res += temp;
+    }
+    initPiece(res);
+    ////initPiece();
     this->curr_user = this->user_w;
     font.loadFromFile("resources/fonts/roboto.ttf");
     status_text.setFont(font);
@@ -193,16 +194,30 @@ void Board::mouse_clicked(const sf::Vector2i& position)
     sf::Vector2f mousePosF( static_cast<float>( position.x ), static_cast<float>( position.y ) );
     if ( button.exitButtonImage.getGlobalBounds().contains( mousePosF ) )
     {
-        string temp;
+        for(int r = 0; r<8; r++)
+        {
+            for(int c = 0; c<8; c++)
+            {
+                if(this->cells[r][c].cell_status == OCCUPIED)
+                {
+                    delete this->cells[r][c].piece;
+                    this->cells[r][c].piece = 0;
+                    this->cells[r][c].cell_status = EMPTY;
+                }
+
+            }
+        }
+        pieces = {};
+        deleted = {};
         string res;
+        string temp;
         ifstream inp;
         inp.open("resources/map/map.txt");
         while (inp>>temp)
         {
             res += temp;
         }
-        initPiece(res);
-        
+        initPiece(res);  
     }
     if (this->cells[row][column].cell_status == EMPTY || curr_user->color != cells[row][column].piece->color)
     {

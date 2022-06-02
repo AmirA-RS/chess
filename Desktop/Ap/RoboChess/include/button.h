@@ -27,7 +27,7 @@ public:
     {
         startText.setFont( font );
         startText.setStyle( sf::Text::Bold );
-        startText.setString("Input Map");
+        startText.setString("Reset Map");
         startText.setFillColor( sf::Color::Black );
         startText.setCharacterSize( 20 );
         startText.setPosition(setting::board_x-95, 35);

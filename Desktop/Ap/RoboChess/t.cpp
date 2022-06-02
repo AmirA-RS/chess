@@ -10,22 +10,9 @@ using std::string;
 #include "iomanip"
 int main()
 {
-    ofstream snake;
-    snake.open("first.txt", ios::out);
-    int a;
-    int b;
-    int m = 0;
-    while (cin>>a>>b && m<4)
-    {
-        snake<<a<<' '<<b<<'\n';
-        m++;
-    }
-    snake.close();
-    ifstream show;
-    show.open("fist.txt", ios::in);
-    while (show>>a>>b)
-    {
-        cout<<a<<' '<<b<<'\n';
-    }
+    int* a = new int;
+    *a = 5;
+    cout<<*a;
+    delete a;
     
 }
