@@ -4,6 +4,7 @@
 CMakeFiles/RoboChess.dir/src/board.cpp.o
  /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/board.cpp
  include/board.h
+ include/button.h
  include/cell.h
  include/data.h
  include/helper.h
@@ -18,6 +19,7 @@ CMakeFiles/RoboChess.dir/src/helper.cpp.o
 CMakeFiles/RoboChess.dir/src/main.cpp.o
  /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/main.cpp
  include/board.h
+ include/button.h
  include/cell.h
  include/data.h
  include/helper.h

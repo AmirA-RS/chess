@@ -1,6 +1,8 @@
 #include "board.h"
 #include "iostream"
 #include <SFML/Audio.hpp>
+#include "button.h"
+#include <stdlib.h>
 using sf::String;
 using sf::Text;
 Board::Board(sf::RenderWindow* _window) : window(_window)
@@ -46,14 +48,14 @@ void Board::init()
             this->cells[row][column].rect.setPosition(get_cell_position(row, column));
         }
     }
-    string inp;
-    string temp;
-    for(int i = 0; i<8; i++)
-    {
-        getline(cin, temp);
-        inp += temp+'\n';
-    }
-    initPiece(inp);
+    // string inp;
+    // string temp;
+    // for(int i = 0; i<8; i++)
+    // {
+    //     getline(cin, temp);
+    //     inp += temp+'\n';
+    // }
+    //initPiece(inp);
     //initPiece();
     this->curr_user = this->user_w;
     font.loadFromFile("resources/fonts/roboto.ttf");
@@ -73,7 +75,7 @@ void Board::initPiece(string& text)
     {
         if(text[i] == '-')
         {
-            i += 3;
+            i += 2;
             col++;
             
         }
@@ -106,7 +108,7 @@ void Board::initPiece(string& text)
             pieces.push_back(this->cells[row][col].piece);
             this->cells[row][col].cell_status = OCCUPIED;
             this->cells[row][col].piece->sprite.setPosition(this->cells[row][col].rect.getPosition());
-            i += 3;
+            i += 2;
             col++;
         }
         if(col == 8)
@@ -148,6 +150,7 @@ void Board::run()
     this->init();
     defence(curr_user->color);
     attack(curr_user->color);
+    button.start();
     this->window->display();
     while (this->window->isOpen()) {
         sf::Event event;
@@ -155,12 +158,19 @@ void Board::run()
             if (event.type == sf::Event::Closed) {
                 this->window->close();
             }
-            // string mapInput;
-            // Text mapText;
-            // if(event.type == sf::Event::TextEntered)
-            // {
-            //     mapInput += event.text.unicode;                             
-            // }
+            if(event.type == sf::Event::MouseMoved)
+            {
+                sf::Vector2i mousePos = sf::Mouse::getPosition( *window );
+                sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+                if ( button.exitButtonImage.getGlobalBounds().contains( mousePosF ) )
+                {
+                    button.exitButtonImage.setFillColor( sf::Color(255, 255, 10, 80) );
+                }
+                else
+                {
+                    button.exitButtonImage.setFillColor( sf::Color(255, 255, 10, 200) );
+                }
+            }
             if (!this->end && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 this->mouse_clicked(sf::Mouse::getPosition(*(this->window)));
             }
@@ -168,6 +178,8 @@ void Board::run()
         window->clear(sf::Color::White);
         window->draw(table);
         window->draw(background);
+        window->draw( button.exitButtonImage );
+        window->draw( button.startText );
         this->update_status_text();
         this->draw();
         check_checked(curr_user->color);
@@ -178,8 +190,20 @@ void Board::run()
 void Board::mouse_clicked(const sf::Vector2i& position)
 {   
     int row = get_cell_index(position.y), column = get_cell_index(position.x);
-    if (row == -1 || column == -1)
-        return;
+    sf::Vector2f mousePosF( static_cast<float>( position.x ), static_cast<float>( position.y ) );
+    if ( button.exitButtonImage.getGlobalBounds().contains( mousePosF ) )
+    {
+        string temp;
+        string res;
+        ifstream inp;
+        inp.open("resources/map/map.txt");
+        while (inp>>temp)
+        {
+            res += temp;
+        }
+        initPiece(res);
+        
+    }
     if (this->cells[row][column].cell_status == EMPTY || curr_user->color != cells[row][column].piece->color)
     {
         this->cell_empty_clicked(row, column);

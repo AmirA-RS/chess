@@ -13,6 +13,10 @@ iostream
 /home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/iostream
 SFML/Audio.hpp
 -
+button.h
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/src/button.h
+stdlib.h
+-
 
 include/board.h
 string
@@ -31,6 +35,18 @@ setting.h
 include/setting.h
 helper.h
 include/helper.h
+button.h
+include/button.h
+fstream
+include/fstream
+
+include/button.h
+SFML/Graphics.hpp
+include/SFML/Graphics.hpp
+string
+include/string
+setting.h
+include/setting.h
 
 include/cell.h
 vector
