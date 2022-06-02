@@ -77,7 +77,7 @@ void Board::initPiece(string& text)
     {
         if(text[i] == '-')
         {
-            i += 3;
+            i += 2;
             col++;
             
         }
@@ -110,7 +110,7 @@ void Board::initPiece(string& text)
             pieces.push_back(this->cells[row][col].piece);
             this->cells[row][col].cell_status = OCCUPIED;
             this->cells[row][col].piece->sprite.setPosition(this->cells[row][col].rect.getPosition());
-            i += 3;
+            i += 2;
             col++;
         }
         if(col == 8)
