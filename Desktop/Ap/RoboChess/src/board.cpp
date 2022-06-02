@@ -1,9 +1,11 @@
 #include "board.h"
 #include "iostream"
 #include <SFML/Audio.hpp>
-//ey baba
+#include "button.h"
+#include <stdlib.h>
 using sf::String;
 using sf::Text;
+//mal mane
 Board::Board(sf::RenderWindow* _window) : window(_window)
 {
     this->user_w = new User('W');
@@ -47,15 +49,16 @@ void Board::init()
             this->cells[row][column].rect.setPosition(get_cell_position(row, column));
         }
     }
-    string inp;
     string temp;
-    for(int i = 0; i<8; i++)
+    string res;
+    ifstream inp;
+    inp.open("resources/map/map.txt");
+    while (inp>>temp)
     {
-        getline(cin, temp);
-        inp += temp+'\n';
+        res += temp;
     }
-    initPiece(inp);
-    //initPiece();
+    initPiece(res);
+    ////initPiece();
     this->curr_user = this->user_w;
     font.loadFromFile("resources/fonts/roboto.ttf");
     status_text.setFont(font);
@@ -74,7 +77,7 @@ void Board::initPiece(string& text)
     {
         if(text[i] == '-')
         {
-            i += 3;
+            i += 2;
             col++;
             
         }
@@ -107,7 +110,7 @@ void Board::initPiece(string& text)
             pieces.push_back(this->cells[row][col].piece);
             this->cells[row][col].cell_status = OCCUPIED;
             this->cells[row][col].piece->sprite.setPosition(this->cells[row][col].rect.getPosition());
-            i += 3;
+            i += 2;
             col++;
         }
         if(col == 8)
@@ -147,6 +150,9 @@ void Board::run()
     piece_scale_y = (float)(setting::board_y) / table.getTexture()->getSize().y;
     table.setScale(piece_scale_x, piece_scale_y);
     this->init();
+    defence(curr_user->color);
+    attack(curr_user->color);
+    button.start();
     this->window->display();
     while (this->window->isOpen()) {
         sf::Event event;
@@ -154,12 +160,19 @@ void Board::run()
             if (event.type == sf::Event::Closed) {
                 this->window->close();
             }
-            // string mapInput;
-            // Text mapText;
-            // if(event.type == sf::Event::TextEntered)
-            // {
-            //     mapInput += event.text.unicode;                             
-            // }
+            if(event.type == sf::Event::MouseMoved)
+            {
+                sf::Vector2i mousePos = sf::Mouse::getPosition( *window );
+                sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
+                if ( button.exitButtonImage.getGlobalBounds().contains( mousePosF ) )
+                {
+                    button.exitButtonImage.setFillColor( sf::Color(255, 255, 10, 80) );
+                }
+                else
+                {
+                    button.exitButtonImage.setFillColor( sf::Color(255, 255, 10, 200) );
+                }
+            }
             if (!this->end && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 this->mouse_clicked(sf::Mouse::getPosition(*(this->window)));
             }
@@ -167,6 +180,8 @@ void Board::run()
         window->clear(sf::Color::White);
         window->draw(table);
         window->draw(background);
+        window->draw( button.exitButtonImage );
+        window->draw( button.startText );
         this->update_status_text();
         this->draw();
         check_checked(curr_user->color);
@@ -177,8 +192,35 @@ void Board::run()
 void Board::mouse_clicked(const sf::Vector2i& position)
 {   
     int row = get_cell_index(position.y), column = get_cell_index(position.x);
-    if (row == -1 || column == -1)
-        return;
+    sf::Vector2f mousePosF( static_cast<float>( position.x ), static_cast<float>( position.y ) );
+    if ( button.exitButtonImage.getGlobalBounds().contains( mousePosF ) )
+    {
+        for(int r = 0; r<8; r++)
+        {
+            for(int c = 0; c<8; c++)
+            {
+                if(this->cells[r][c].cell_status == OCCUPIED)
+                {
+                    delete this->cells[r][c].piece;
+                    this->cells[r][c].piece = 0;
+                    this->cells[r][c].cell_status = EMPTY;
+                }
+
+            }
+        }
+        curr_user = user_w;
+        pieces = {};
+        deleted = {};
+        string res;
+        string temp;
+        ifstream inp;
+        inp.open("resources/map/map.txt");
+        while (inp>>temp)
+        {
+            res += temp;
+        }
+        initPiece(res);  
+    }
     if (this->cells[row][column].cell_status == EMPTY || curr_user->color != cells[row][column].piece->color)
     {
         this->cell_empty_clicked(row, column);

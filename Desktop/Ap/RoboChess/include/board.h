@@ -8,7 +8,9 @@
 #include "cell.h"
 #include "setting.h"
 #include "helper.h"
-
+#include "button.h"
+#include "fstream"
+using std::ifstream;
 class Board
 {
 public:
@@ -29,6 +31,7 @@ public:
     static vector<Piece*> deleted;
     sf::SoundBuffer buf;
     sf::Sound sound;
+    Button button;
     void init();
     void draw();
     void run();

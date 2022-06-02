@@ -3,6 +3,7 @@
 
 CMakeFiles/RoboChess.dir/src/board.cpp.o: src/board.cpp
 CMakeFiles/RoboChess.dir/src/board.cpp.o: include/board.h
+CMakeFiles/RoboChess.dir/src/board.cpp.o: include/button.h
 CMakeFiles/RoboChess.dir/src/board.cpp.o: include/cell.h
 CMakeFiles/RoboChess.dir/src/board.cpp.o: include/data.h
 CMakeFiles/RoboChess.dir/src/board.cpp.o: include/helper.h
@@ -17,6 +18,7 @@ CMakeFiles/RoboChess.dir/src/helper.cpp.o: include/setting.h
 
 CMakeFiles/RoboChess.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/RoboChess.dir/src/main.cpp.o: include/board.h
+CMakeFiles/RoboChess.dir/src/main.cpp.o: include/button.h
 CMakeFiles/RoboChess.dir/src/main.cpp.o: include/cell.h
 CMakeFiles/RoboChess.dir/src/main.cpp.o: include/data.h
 CMakeFiles/RoboChess.dir/src/main.cpp.o: include/helper.h
