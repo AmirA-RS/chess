@@ -1,6 +1,7 @@
 #include "board.h"
 #include "iostream"
 #include <SFML/Audio.hpp>
+//ey baba
 using sf::String;
 using sf::Text;
 Board::Board(sf::RenderWindow* _window) : window(_window)
