@@ -49,6 +49,7 @@ void Board::init()
             this->cells[row][column].rect.setPosition(get_cell_position(row, column));
         }
     }
+<<<<<<< HEAD
     string temp;
     string res;
     ifstream inp;
@@ -59,6 +60,17 @@ void Board::init()
     }
     initPiece(res);
     ////initPiece();
+=======
+    string inp;
+    string temp;
+    for(int i = 0; i<8; i++)
+    {
+        getline(cin, temp);
+        inp += temp+'\n';
+    }
+    initPiece(inp);
+    //initPiece();
+>>>>>>> changedWithErr
     this->curr_user = this->user_w;
     font.loadFromFile("resources/fonts/roboto.ttf");
     status_text.setFont(font);
@@ -77,7 +89,7 @@ void Board::initPiece(string& text)
     {
         if(text[i] == '-')
         {
-            i += 2;
+            i += 3;
             col++;
             
         }
@@ -110,7 +122,7 @@ void Board::initPiece(string& text)
             pieces.push_back(this->cells[row][col].piece);
             this->cells[row][col].cell_status = OCCUPIED;
             this->cells[row][col].piece->sprite.setPosition(this->cells[row][col].rect.getPosition());
-            i += 2;
+            i += 3;
             col++;
         }
         if(col == 8)
@@ -195,6 +207,7 @@ void Board::mouse_clicked(const sf::Vector2i& position)
     sf::Vector2f mousePosF( static_cast<float>( position.x ), static_cast<float>( position.y ) );
     if ( button.exitButtonImage.getGlobalBounds().contains( mousePosF ) )
     {
+<<<<<<< HEAD
         for(int r = 0; r<8; r++)
         {
             for(int c = 0; c<8; c++)
@@ -220,6 +233,8 @@ void Board::mouse_clicked(const sf::Vector2i& position)
             res += temp;
         }
         initPiece(res);  
+=======
+>>>>>>> changedWithErr
     }
     if (this->cells[row][column].cell_status == EMPTY || curr_user->color != cells[row][column].piece->color)
     {
