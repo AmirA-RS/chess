@@ -28,7 +28,7 @@ public:
         startText.setFont( font );
         startText.setStyle( sf::Text::Bold );
         startText.setString("Reset Map");
-        startText.setFillColor( sf::Color::Black );
+        startText.setFillColor( sf::Color::White );
         startText.setCharacterSize( 20 );
         startText.setPosition(setting::board_x-95, 35);
     }

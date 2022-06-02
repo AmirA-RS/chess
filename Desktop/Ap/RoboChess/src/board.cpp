@@ -166,11 +166,11 @@ void Board::run()
                 sf::Vector2f mousePosF( static_cast<float>( mousePos.x ), static_cast<float>( mousePos.y ) );
                 if ( button.exitButtonImage.getGlobalBounds().contains( mousePosF ) )
                 {
-                    button.exitButtonImage.setFillColor( sf::Color(255, 255, 10, 80) );
+                    button.exitButtonImage.setFillColor( sf::Color(168, 10, 10, 200) );
                 }
                 else
                 {
-                    button.exitButtonImage.setFillColor( sf::Color(255, 255, 10, 200) );
+                    button.exitButtonImage.setFillColor( sf::Color(10, 10, 10, 80) );
                 }
             }
             if (!this->end && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -219,7 +219,9 @@ void Board::mouse_clicked(const sf::Vector2i& position)
         {
             res += temp;
         }
-        initPiece(res);  
+        initPiece(res);
+        defence(curr_user->color);
+        attack(curr_user->color);
     }
     if (this->cells[row][column].cell_status == EMPTY || curr_user->color != cells[row][column].piece->color)
     {

@@ -1,0 +1,3 @@
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/edit_cache.dir
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/rebuild_cache.dir
+/home/amirabbas/Desktop/Ap/chess/Desktop/Ap/RoboChess/CMakeFiles/RoboChess.dir
