@@ -146,6 +146,8 @@ void Board::run()
     piece_scale_y = (float)(setting::board_y) / table.getTexture()->getSize().y;
     table.setScale(piece_scale_x, piece_scale_y);
     this->init();
+    defence(curr_user->color);
+    attack(curr_user->color);
     this->window->display();
     while (this->window->isOpen()) {
         sf::Event event;
